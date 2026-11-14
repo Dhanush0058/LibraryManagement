@@ -5,6 +5,7 @@ import {
   BarChart3, UserCheck, Settings, ShieldAlert, Sparkles
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { Logo } from '../ui/Logo';
 
 export type NavItemKey = 
   | 'dashboard'
@@ -79,9 +80,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       >
         {/* Brand Header with Warm Terracotta Emblem */}
         <div className="p-5 border-b border-charcoal-800 bg-charcoal-950 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-coral-500 to-coral-600 flex items-center justify-center text-white font-bold shadow-md shadow-coral-500/20">
-            <span className="text-xl">📖</span>
-          </div>
+          <Logo size="md" variant="coral" />
           <div className="overflow-hidden">
             <h1 className="text-sm font-bold text-white tracking-wide truncate flex items-center gap-1.5">
               LibraCare <span className="text-[10px] text-coral-400 font-mono font-normal">v2.4</span>

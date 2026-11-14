@@ -214,26 +214,35 @@ export const BookListView: React.FC = () => {
                   return (
                     <tr key={book.id} className="hover:bg-slate-50/70 transition">
                       {/* Book info */}
-                      <td className="px-4 py-3 max-w-xs">
-                        <div className="flex items-start gap-3">
-                          {book.cover_url ? (
-                            <img
-                              src={book.cover_url}
-                              alt=""
-                              className="w-9 h-12 object-cover rounded shadow-2xs flex-shrink-0 border border-slate-200"
-                            />
-                          ) : (
-                            <div className="w-9 h-12 bg-slate-100 rounded border border-slate-200 flex items-center justify-center text-slate-400 flex-shrink-0">
-                              <BookOpen className="w-4 h-4" />
+                      <td className="px-4 py-3.5 max-w-sm">
+                        <div className="flex items-start gap-3.5">
+                          <div className="w-10 h-14 rounded-lg bg-charcoal-900 border border-parchment-200 overflow-hidden shadow-xs flex-shrink-0 relative group">
+                            {book.cover_url ? (
+                              <img
+                                src={book.cover_url}
+                                alt={book.title}
+                                className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                                onError={(e) => {
+                                  (e.target as HTMLElement).style.display = 'none';
+                                  (e.target as HTMLElement).nextElementSibling?.classList.remove('hidden');
+                                }}
+                              />
+                            ) : null}
+                            <div className={`${book.cover_url ? 'hidden' : ''} w-full h-full bg-gradient-to-b from-charcoal-800 to-charcoal-950 p-1 flex flex-col justify-between items-center text-center`}>
+                              <span className="text-[8px] font-mono font-bold text-coral-400 uppercase tracking-tighter truncate w-full">
+                                {book.subject?.substring(0, 4) || 'MED'}
+                              </span>
+                              <BookOpen className="w-3.5 h-3.5 text-parchment-300" />
+                              <span className="w-full h-0.5 bg-coral-500 rounded-full"></span>
                             </div>
-                          )}
+                          </div>
                           <div className="overflow-hidden">
-                            <h4 className="font-semibold text-slate-900 line-clamp-1 text-xs" title={book.title}>
+                            <h4 className="font-bold text-charcoal-900 line-clamp-1 text-xs hover:text-coral-600 transition" title={book.title}>
                               {book.title}
                             </h4>
-                            <p className="text-[11px] font-mono text-slate-500 mt-0.5">ISBN: {book.isbn}</p>
+                            <p className="text-[11px] font-mono text-charcoal-500 mt-0.5">ISBN: {book.isbn}</p>
                             {book.edition && (
-                              <span className="text-[10px] text-coral-700 bg-coral-50 px-1.5 py-0.2 rounded border border-coral-200 mt-0.5 inline-block">
+                              <span className="text-[10px] text-coral-800 bg-coral-50 px-2.5 py-0.5 rounded-full border border-coral-200 font-semibold mt-1 inline-block">
                                 {book.edition}
                               </span>
                             )}

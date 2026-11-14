@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, Save, ShieldAlert, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Settings, Save, ShieldAlert, AlertTriangle, CheckCircle, GraduationCap, Stethoscope, BookX } from 'lucide-react';
 import { db } from '../../services/db';
 import { LibrarySettings } from '../../types';
 import { Button } from '../ui/Button';
@@ -81,7 +81,8 @@ export const LibrarySettingsView: React.FC = () => {
         <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
           <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
             <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
-              🎓 MBBS Undergraduate & Postgraduate Student Rules
+              <GraduationCap className="w-4 h-4 text-coral-600" />
+              <span>MBBS Undergraduate & Postgraduate Student Rules</span>
             </h3>
             <span className="text-[11px] text-coral-700 bg-coral-50 px-2 py-0.5 rounded font-semibold border border-coral-200">
               Student Category
@@ -149,7 +150,8 @@ export const LibrarySettingsView: React.FC = () => {
         <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
           <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
             <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
-              👨‍⚕️ Doctors, Faculty & Hospital Staff Rules
+              <Stethoscope className="w-4 h-4 text-coral-600" />
+              <span>Doctors, Faculty & Hospital Staff Rules</span>
             </h3>
             <span className="text-[11px] text-coral-700 bg-coral-50 px-2 py-0.5 rounded font-semibold border border-coral-200">
               Staff Category
@@ -216,8 +218,9 @@ export const LibrarySettingsView: React.FC = () => {
         {/* Book Loss & Damage Policy Card */}
         <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
           <div className="border-b border-slate-100 pb-3">
-            <h3 className="text-sm font-bold text-slate-800">
-              📖 Lost Book Replacement & Physical Damage Liabilities
+            <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+              <BookX className="w-4 h-4 text-coral-600" />
+              <span>Lost Book Replacement & Physical Damage Liabilities</span>
             </h3>
           </div>
 

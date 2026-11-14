@@ -4,6 +4,7 @@ import { useToast } from '../../context/ToastContext';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Shield, BookOpen, KeyRound, Info, Sparkles, ArrowRight } from 'lucide-react';
+import { Logo } from '../ui/Logo';
 
 export const LoginView: React.FC = () => {
   const { login, resetPasswordRequest } = useAuth();
@@ -67,9 +68,7 @@ export const LoginView: React.FC = () => {
         <div className="bg-charcoal-900 p-8 text-white text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-coral-500/10 rounded-full blur-xl pointer-events-none" />
           
-          <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-coral-600 to-coral-400 flex items-center justify-center text-white text-2xl shadow-lg shadow-coral-500/30 mb-3.5 transform hover:scale-105 transition">
-            📖
-          </div>
+          <Logo size="lg" variant="coral" className="mx-auto mb-3.5" />
           <h1 className="text-2xl font-bold tracking-tight text-white">LibraCare</h1>
           <p className="text-xs font-semibold text-coral-400 uppercase tracking-widest mt-1">
             ESIC Medical College & Hospital

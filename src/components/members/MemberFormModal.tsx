@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { GraduationCap, Stethoscope } from 'lucide-react';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
 import { Input, Select } from '../ui/Input';
@@ -127,24 +128,26 @@ export const MemberFormModal: React.FC<MemberFormModalProps> = ({
             <button
               type="button"
               onClick={() => handleTypeChange('student')}
-              className={`py-2 px-3 rounded-lg border text-xs font-semibold flex items-center justify-center gap-2 transition ${
+              className={`py-2.5 px-3.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition ${
                 memberType === 'student'
                   ? 'bg-coral-50 border-coral-500 text-coral-800 ring-1 ring-coral-500'
-                  : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                  : 'bg-white border-parchment-200 text-charcoal-600 hover:bg-parchment-50'
               }`}
             >
-              🎓 Student (MBBS / PG)
+              <GraduationCap className="w-4 h-4 text-coral-600" />
+              <span>Student (MBBS / PG)</span>
             </button>
             <button
               type="button"
               onClick={() => handleTypeChange('staff')}
-              className={`py-2 px-3 rounded-lg border text-xs font-semibold flex items-center justify-center gap-2 transition ${
+              className={`py-2.5 px-3.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-2 transition ${
                 memberType === 'staff'
                   ? 'bg-coral-50 border-coral-500 text-coral-800 ring-1 ring-coral-500'
-                  : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                  : 'bg-white border-parchment-200 text-charcoal-600 hover:bg-parchment-50'
               }`}
             >
-              👨‍⚕️ Faculty / Hospital Staff
+              <Stethoscope className="w-4 h-4 text-coral-600" />
+              <span>Faculty / Hospital Staff</span>
             </button>
           </div>
         </div>
