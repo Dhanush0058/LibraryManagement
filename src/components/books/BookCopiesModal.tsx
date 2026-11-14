@@ -111,8 +111,8 @@ export const BookCopiesModal: React.FC<BookCopiesModalProps> = ({
 
         {/* Add Copy Form */}
         {showAddForm && (
-          <form onSubmit={handleAddCopy} className="p-4 bg-teal-50/50 rounded-lg border border-teal-200 space-y-3">
-            <h4 className="text-xs font-bold text-teal-900 uppercase tracking-wide flex items-center gap-1.5">
+          <form onSubmit={handleAddCopy} className="p-4 bg-coral-50/50 rounded-lg border border-coral-200 space-y-3">
+            <h4 className="text-xs font-bold text-coral-800 uppercase tracking-wide flex items-center gap-1.5">
               <Tag className="w-3.5 h-3.5" /> Register New Accession Unit
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -226,7 +226,7 @@ export const BookCopiesModal: React.FC<BookCopiesModalProps> = ({
                               setNewStatus(copy.status);
                               setEditNotes(copy.condition_notes || '');
                             }}
-                            className="text-teal-700 hover:text-teal-900 font-medium text-xs hover:underline"
+                            className="text-coral-600 hover:text-coral-800 font-medium text-xs hover:underline"
                           >
                             Update Status
                           </button>

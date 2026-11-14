@@ -13,22 +13,22 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={inputId} className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-            {label} {props.required && <span className="text-red-500">*</span>}
+          <label htmlFor={inputId} className="block text-xs font-semibold uppercase tracking-wider text-charcoal-700 mb-1.5">
+            {label} {props.required && <span className="text-coral-600">*</span>}
           </label>
         )}
         <input
           id={inputId}
           ref={ref}
-          className={`w-full px-3 py-2 text-sm rounded-lg border bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-colors ${
+          className={`w-full px-3.5 py-2 text-sm rounded-xl border bg-white text-charcoal-900 placeholder:text-charcoal-400 focus:outline-none focus:ring-2 transition-colors ${
             error
               ? 'border-red-400 focus:border-red-500 focus:ring-red-200'
-              : 'border-slate-300 focus:border-teal-600 focus:ring-teal-100'
+              : 'border-parchment-300 focus:border-coral-500 focus:ring-coral-100'
           } ${className}`}
           {...props}
         />
         {error && <p className="mt-1 text-xs text-red-600 font-medium">{error}</p>}
-        {helperText && !error && <p className="mt-1 text-xs text-slate-500">{helperText}</p>}
+        {helperText && !error && <p className="mt-1 text-xs text-charcoal-500">{helperText}</p>}
       </div>
     );
   }
@@ -48,17 +48,17 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={selectId} className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-            {label} {props.required && <span className="text-red-500">*</span>}
+          <label htmlFor={selectId} className="block text-xs font-semibold uppercase tracking-wider text-charcoal-700 mb-1.5">
+            {label} {props.required && <span className="text-coral-600">*</span>}
           </label>
         )}
         <select
           id={selectId}
           ref={ref}
-          className={`w-full px-3 py-2 text-sm rounded-lg border bg-white text-slate-900 focus:outline-none focus:ring-2 transition-colors ${
+          className={`w-full px-3.5 py-2 text-sm rounded-xl border bg-white text-charcoal-900 focus:outline-none focus:ring-2 transition-colors ${
             error
               ? 'border-red-400 focus:border-red-500 focus:ring-red-200'
-              : 'border-slate-300 focus:border-teal-600 focus:ring-teal-100'
+              : 'border-parchment-300 focus:border-coral-500 focus:ring-coral-100'
           } ${className}`}
           {...props}
         >
@@ -87,17 +87,17 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={textareaId} className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-            {label} {props.required && <span className="text-red-500">*</span>}
+          <label htmlFor={textareaId} className="block text-xs font-semibold uppercase tracking-wider text-charcoal-700 mb-1.5">
+            {label} {props.required && <span className="text-coral-600">*</span>}
           </label>
         )}
         <textarea
           id={textareaId}
           ref={ref}
-          className={`w-full px-3 py-2 text-sm rounded-lg border bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 transition-colors ${
+          className={`w-full px-3.5 py-2 text-sm rounded-xl border bg-white text-charcoal-900 placeholder:text-charcoal-400 focus:outline-none focus:ring-2 transition-colors ${
             error
               ? 'border-red-400 focus:border-red-500 focus:ring-red-200'
-              : 'border-slate-300 focus:border-teal-600 focus:ring-teal-100'
+              : 'border-parchment-300 focus:border-coral-500 focus:ring-coral-100'
           } ${className}`}
           rows={props.rows || 3}
           {...props}

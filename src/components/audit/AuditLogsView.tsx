@@ -56,7 +56,7 @@ export const AuditLogsView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <ShieldAlert className="w-5 h-5 text-teal-700" />
+            <ShieldAlert className="w-5 h-5 text-coral-600" />
             Institutional Security & Audit Trail
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -78,7 +78,7 @@ export const AuditLogsView: React.FC = () => {
             placeholder="Search by action, user email, entity ID, or operation details..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600"
+            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500"
           />
         </div>
 
@@ -87,7 +87,7 @@ export const AuditLogsView: React.FC = () => {
           <select
             value={actionFilter}
             onChange={e => setActionFilter(e.target.value)}
-            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600 bg-white"
+            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500 bg-white"
           >
             <option value="all">All Audit Actions</option>
             <option value="ISSUE_BOOK">ISSUE_BOOK</option>

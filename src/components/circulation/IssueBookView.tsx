@@ -139,7 +139,7 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <BookUp className="w-5 h-5 text-teal-700" />
+            <BookUp className="w-5 h-5 text-coral-600" />
             Circulation Desk — Issue Book
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -151,15 +151,15 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
 
       {/* Success Receipt Banner if just issued */}
       {lastIssuedReceipt && (
-        <div className="bg-teal-50 border border-teal-200 rounded-xl p-5 shadow-xs animate-fadeIn">
+        <div className="bg-coral-50 border border-coral-200 rounded-xl p-5 shadow-xs animate-fadeIn">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-teal-700" />
-              <h3 className="font-bold text-teal-900 text-sm">Issue Transaction Complete</h3>
+              <CheckCircle2 className="w-5 h-5 text-coral-600" />
+              <h3 className="font-bold text-coral-800 text-sm">Issue Transaction Complete</h3>
             </div>
             <button
               onClick={() => setLastIssuedReceipt(null)}
-              className="text-xs text-teal-700 hover:text-teal-950 font-medium"
+              className="text-xs text-coral-600 hover:text-charcoal-950 font-medium"
             >
               Dismiss
             </button>
@@ -175,7 +175,7 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
             </div>
             <div>
               <span className="text-slate-500 block">Accession Number:</span>
-              <span className="font-mono font-semibold text-teal-800">{lastIssuedReceipt.copy?.accession_number}</span>
+              <span className="font-mono font-semibold text-coral-700">{lastIssuedReceipt.copy?.accession_number}</span>
             </div>
             <div>
               <span className="text-slate-500 block">Return Due Date:</span>
@@ -191,7 +191,7 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
         <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-teal-100 text-teal-800 text-xs font-bold flex items-center justify-center">
+              <span className="w-5 h-5 rounded-full bg-coral-100 text-coral-700 text-xs font-bold flex items-center justify-center">
                 1
               </span>
               Verify Borrower Membership
@@ -273,7 +273,7 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
         <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-teal-100 text-teal-800 text-xs font-bold flex items-center justify-center">
+              <span className="w-5 h-5 rounded-full bg-coral-100 text-coral-700 text-xs font-bold flex items-center justify-center">
                 2
               </span>
               Select Physical Copy (Accession)
@@ -299,7 +299,7 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
           {selectedCopy ? (
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
               <div>
-                <span className="text-[10px] text-teal-800 uppercase font-bold tracking-wider">Accession Number</span>
+                <span className="text-[10px] text-coral-700 uppercase font-bold tracking-wider">Accession Number</span>
                 <h4 className="font-mono font-bold text-slate-900 text-sm">{selectedCopy.accession_number}</h4>
               </div>
 
@@ -331,7 +331,7 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
       {/* Step 3: Dates & Confirmation */}
       <form onSubmit={handleConfirmIssue} className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
         <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3">
-          <span className="w-5 h-5 rounded-full bg-teal-100 text-teal-800 text-xs font-bold flex items-center justify-center">
+          <span className="w-5 h-5 rounded-full bg-coral-100 text-coral-700 text-xs font-bold flex items-center justify-center">
             3
           </span>
           Issue Schedule & Confirmation

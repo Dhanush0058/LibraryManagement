@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   LayoutDashboard, BookOpen, Layers, Users, BookUp, 
   BookDown, History, AlertCircle, IndianRupee, ShoppingCart, 
-  BarChart3, UserCheck, Settings, ShieldAlert
+  BarChart3, UserCheck, Settings, ShieldAlert, Sparkles
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -49,7 +49,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { key: 'fines', label: 'Fines & Payments', icon: IndianRupee, section: 'Finance & Compliance' },
     { key: 'purchases', label: 'Purchases & Stock', icon: ShoppingCart, section: 'Acquisition' },
     { key: 'reports', label: 'Reports & Analytics', icon: BarChart3, section: 'Reports' },
-    // Super admin protected
     ...(isSuperAdmin
       ? [
           { key: 'staff', label: 'Staff Management', icon: UserCheck, section: 'Administration' },
@@ -66,28 +65,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <>
-      {/* Mobile backdrop */}
       {isOpenMobile && (
         <div 
-          className="fixed inset-0 bg-slate-900/60 z-30 lg:hidden"
+          className="fixed inset-0 bg-charcoal-950/70 backdrop-blur-xs z-30 lg:hidden"
           onClick={onCloseMobile}
         />
       )}
 
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-slate-900 text-slate-300 flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-charcoal-900 text-charcoal-200 flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           isOpenMobile ? 'translate-x-0' : '-translate-x-full'
-        } border-r border-slate-800`}
+        } border-r border-charcoal-800`}
       >
-        {/* Brand Header */}
-        <div className="p-4 border-b border-slate-800 bg-slate-950 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-teal-600 flex items-center justify-center text-white font-bold shadow-md">
-            <span className="text-xl">🏛️</span>
+        {/* Brand Header with Warm Terracotta Emblem */}
+        <div className="p-5 border-b border-charcoal-800 bg-charcoal-950 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-coral-500 to-coral-600 flex items-center justify-center text-white font-bold shadow-md shadow-coral-500/20">
+            <span className="text-xl">📖</span>
           </div>
           <div className="overflow-hidden">
-            <h1 className="text-sm font-bold text-white tracking-wide truncate">LibraCare ESIC</h1>
-            <p className="text-[11px] text-teal-400 font-medium tracking-tight truncate">Medical College & Hospital</p>
-            <p className="text-[10px] text-slate-400 truncate">Sangareddy, Telangana</p>
+            <h1 className="text-sm font-bold text-white tracking-wide truncate flex items-center gap-1.5">
+              LibraCare <span className="text-[10px] text-coral-400 font-mono font-normal">v2.4</span>
+            </h1>
+            <p className="text-[11px] text-coral-400 font-semibold tracking-tight truncate">ESIC Medical College</p>
+            <p className="text-[10px] text-charcoal-400 truncate">Sangareddy, Telangana</p>
           </div>
         </div>
 
@@ -102,19 +102,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
             return (
               <React.Fragment key={item.key}>
                 {isNewSection && (
-                  <div className="pt-3 pb-1 px-3 text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                  <div className="pt-3 pb-1 px-3 text-[10px] font-bold uppercase tracking-wider text-charcoal-500">
                     {item.section}
                   </div>
                 )}
                 <button
                   onClick={() => handleNavClick(item.key as NavItemKey)}
-                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                     isActive
-                      ? 'bg-teal-700/80 text-white shadow-sm font-semibold'
-                      : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+                      ? 'bg-coral-500 text-white shadow-md shadow-coral-500/20 font-bold'
+                      : 'text-charcoal-400 hover:bg-charcoal-800 hover:text-white'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-teal-300' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-white' : 'text-charcoal-400'}`} />
                   <span className="truncate">{item.label}</span>
                 </button>
               </React.Fragment>
@@ -123,16 +123,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Footer info */}
-        <div className="p-3 border-t border-slate-800 bg-slate-950/60 text-[11px] text-slate-400 flex flex-col gap-1">
-          <div className="flex items-center justify-between text-slate-400">
-            <span>System Status</span>
-            <span className="inline-flex items-center gap-1 text-emerald-400 font-medium">
+        <div className="p-4 border-t border-charcoal-800 bg-charcoal-950/60 text-[11px] text-charcoal-400 flex flex-col gap-1.5">
+          <div className="flex items-center justify-between">
+            <span className="text-charcoal-400 text-[10px]">Cloud Link</span>
+            <span className="inline-flex items-center gap-1.5 text-emerald-400 font-medium text-[10px]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              Operational
+              Supabase Live
             </span>
           </div>
-          <div className="text-[10px] text-slate-500">
-            ESIC Central Library v2.4 (Authority Portal)
+          <div className="text-[10px] text-charcoal-500">
+            Authority Management Console
           </div>
         </div>
       </aside>

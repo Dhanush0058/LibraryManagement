@@ -72,7 +72,7 @@ export const CategoriesView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <Layers className="w-5 h-5 text-teal-700" />
+            <Layers className="w-5 h-5 text-coral-600" />
             Medical Book Classifications & Categories
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -97,12 +97,12 @@ export const CategoriesView: React.FC = () => {
             >
               <div>
                 <div className="flex items-start justify-between">
-                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-teal-50 text-teal-800 border border-teal-200">
+                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-coral-50 text-coral-700 border border-coral-200">
                     {cat.code}
                   </span>
                   <button
                     onClick={() => handleOpenEdit(cat)}
-                    className="text-xs text-slate-400 hover:text-teal-700 transition"
+                    className="text-xs text-slate-400 hover:text-coral-600 transition"
                   >
                     Edit
                   </button>
@@ -115,7 +115,7 @@ export const CategoriesView: React.FC = () => {
 
               <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
                 <span>{matchingBooks.length} Titles Catalogued</span>
-                <span className="font-semibold text-teal-800">{totalCopies} Copies</span>
+                <span className="font-semibold text-coral-700">{totalCopies} Copies</span>
               </div>
             </div>
           );

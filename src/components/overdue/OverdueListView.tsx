@@ -137,7 +137,7 @@ export const OverdueListView: React.FC = () => {
             placeholder="Search by student/doctor name, ID, book title, accession..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600"
+            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500"
           />
         </div>
 
@@ -145,7 +145,7 @@ export const OverdueListView: React.FC = () => {
           <select
             value={deptFilter}
             onChange={e => setDeptFilter(e.target.value)}
-            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600 bg-white"
+            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500 bg-white"
           >
             <option value="all">All Medical Departments</option>
             {departments.map(d => (
@@ -160,7 +160,7 @@ export const OverdueListView: React.FC = () => {
           <select
             value={durationFilter}
             onChange={e => setDurationFilter(e.target.value as any)}
-            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600 bg-white"
+            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500 bg-white"
           >
             <option value="all">All Durations</option>
             <option value="lt7">&lt; 7 Days</option>
@@ -174,7 +174,7 @@ export const OverdueListView: React.FC = () => {
           <select
             value={sortBy}
             onChange={e => setSortBy(e.target.value as any)}
-            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600 bg-white"
+            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500 bg-white"
           >
             <option value="days_desc">Sort: Most Overdue</option>
             <option value="days_asc">Sort: Least Overdue</option>
@@ -220,7 +220,7 @@ export const OverdueListView: React.FC = () => {
                       </td>
 
                       <td className="px-3 py-3 max-w-xs">
-                        <div className="font-mono text-[11px] font-bold text-teal-800">
+                        <div className="font-mono text-[11px] font-bold text-coral-700">
                           {iss.copy?.accession_number}
                         </div>
                         <div className="font-medium text-slate-800 truncate" title={iss.copy?.book?.title}>
@@ -258,7 +258,7 @@ export const OverdueListView: React.FC = () => {
 
                           <button
                             onClick={() => handleSimulateNotice(iss)}
-                            className="p-1.5 rounded text-slate-500 hover:text-teal-700 hover:bg-slate-100 transition"
+                            className="p-1.5 rounded text-slate-500 hover:text-coral-600 hover:bg-slate-100 transition"
                             title="Simulate SMS/Email notification dispatch"
                           >
                             <Send className="w-3.5 h-3.5" />

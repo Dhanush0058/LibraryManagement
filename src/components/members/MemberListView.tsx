@@ -90,7 +90,7 @@ export const MemberListView: React.FC<MemberListViewProps> = ({ onIssueBookToMem
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <Users className="w-5 h-5 text-teal-700" />
+            <Users className="w-5 h-5 text-coral-600" />
             Student & Faculty Membership Registry
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -103,7 +103,7 @@ export const MemberListView: React.FC<MemberListViewProps> = ({ onIssueBookToMem
             <Download className="w-3.5 h-3.5 mr-1" /> Export CSV
           </Button>
           <Button size="sm" variant="outline" onClick={() => setIsCsvOpen(true)} className="text-xs">
-            <Layers className="w-3.5 h-3.5 mr-1 text-teal-600" /> Bulk CSV Import
+            <Layers className="w-3.5 h-3.5 mr-1 text-coral-500" /> Bulk CSV Import
           </Button>
           <Button
             size="sm"
@@ -128,7 +128,7 @@ export const MemberListView: React.FC<MemberListViewProps> = ({ onIssueBookToMem
             placeholder="Search by Roll No, Employee ID, Name, Department, Phone..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600"
+            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500"
           />
         </div>
 
@@ -136,7 +136,7 @@ export const MemberListView: React.FC<MemberListViewProps> = ({ onIssueBookToMem
           <select
             value={typeFilter}
             onChange={e => setTypeFilter(e.target.value as any)}
-            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600 bg-white"
+            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500 bg-white"
           >
             <option value="all">All Member Types</option>
             <option value="student">Students (MBBS / PG)</option>
@@ -148,7 +148,7 @@ export const MemberListView: React.FC<MemberListViewProps> = ({ onIssueBookToMem
           <select
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value as any)}
-            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600 bg-white"
+            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500 bg-white"
           >
             <option value="all">All Statuses</option>
             <option value="active">Active Borrowers</option>
@@ -206,7 +206,7 @@ export const MemberListView: React.FC<MemberListViewProps> = ({ onIssueBookToMem
                       <td className="px-3 py-3 text-slate-600">
                         <div className="font-medium text-slate-800">{member.department?.name || 'Department'}</div>
                         {member.member_type === 'student' ? (
-                          <div className="text-[11px] text-teal-800 font-medium">
+                          <div className="text-[11px] text-coral-700 font-medium">
                             {member.course} • {member.academic_year}
                           </div>
                         ) : (
@@ -252,7 +252,7 @@ export const MemberListView: React.FC<MemberListViewProps> = ({ onIssueBookToMem
                               setActiveMember(member);
                               setIsDetailOpen(true);
                             }}
-                            className="p-1 rounded text-slate-500 hover:text-teal-700 hover:bg-slate-100 transition"
+                            className="p-1 rounded text-slate-500 hover:text-coral-600 hover:bg-slate-100 transition"
                             title="View member card & loans"
                           >
                             <Eye className="w-3.5 h-3.5" />

@@ -203,7 +203,7 @@ export const ReportsView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-teal-700" />
+            <BarChart3 className="w-5 h-5 text-coral-600" />
             Institutional Reports & Analytics Suite
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -238,7 +238,7 @@ export const ReportsView: React.FC = () => {
             onClick={() => setSelectedReport(item.key as any)}
             className={`p-2.5 rounded-lg text-left transition ${
               selectedReport === item.key
-                ? 'bg-white text-teal-900 font-bold shadow-xs border border-teal-200'
+                ? 'bg-white text-coral-800 font-bold shadow-xs border border-coral-200'
                 : 'text-slate-600 hover:bg-slate-200/70'
             }`}
           >
@@ -314,7 +314,7 @@ export const ReportsView: React.FC = () => {
                       <td className="px-3 py-2 font-medium text-slate-900">{d.name}</td>
                       <td className="px-3 py-2 font-mono text-slate-600">{d.code}</td>
                       <td className="px-3 py-2 text-center font-bold text-slate-800">{memCount}</td>
-                      <td className="px-3 py-2 text-center font-bold text-teal-800">{activeCount}</td>
+                      <td className="px-3 py-2 text-center font-bold text-coral-700">{activeCount}</td>
                     </tr>
                   );
                 })}
@@ -337,7 +337,7 @@ export const ReportsView: React.FC = () => {
               <tbody className="divide-y divide-slate-100">
                 {copies.filter(c => c.status === 'damaged' || c.status === 'lost').map(c => (
                   <tr key={c.id}>
-                    <td className="px-3 py-2 font-mono font-bold text-teal-900">{c.accession_number}</td>
+                    <td className="px-3 py-2 font-mono font-bold text-coral-800">{c.accession_number}</td>
                     <td className="px-3 py-2 font-medium text-slate-900">{c.book?.title}</td>
                     <td className="px-3 py-2 text-center">
                       <Badge variant={c.status === 'lost' ? 'danger' : 'warning'}>

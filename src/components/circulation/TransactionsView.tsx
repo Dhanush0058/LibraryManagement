@@ -68,7 +68,7 @@ export const TransactionsView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <History className="w-5 h-5 text-teal-700" />
+            <History className="w-5 h-5 text-coral-600" />
             Central Circulation Log & Transaction Register
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -86,7 +86,7 @@ export const TransactionsView: React.FC = () => {
             onClick={() => generateCirculationPdf(filteredIssues)}
             className="text-xs"
           >
-            <FileText className="w-3.5 h-3.5 mr-1 text-teal-700" /> Official PDF Register
+            <FileText className="w-3.5 h-3.5 mr-1 text-coral-600" /> Official PDF Register
           </Button>
         </div>
       </div>
@@ -100,7 +100,7 @@ export const TransactionsView: React.FC = () => {
             placeholder="Search by Issue Code, Accession No, Member ID, Book Title..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600"
+            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500"
           />
         </div>
 
@@ -109,7 +109,7 @@ export const TransactionsView: React.FC = () => {
           <select
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value as any)}
-            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600 bg-white"
+            className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500 bg-white"
           >
             <option value="all">All Circulation Statuses</option>
             <option value="active">Active Loans</option>
@@ -152,7 +152,7 @@ export const TransactionsView: React.FC = () => {
                     </td>
 
                     <td className="px-3 py-3 max-w-xs">
-                      <div className="font-mono text-[11px] font-semibold text-teal-800">
+                      <div className="font-mono text-[11px] font-semibold text-coral-700">
                         {issue.copy?.accession_number || 'N/A'}
                       </div>
                       <div className="font-medium text-slate-900 truncate" title={issue.copy?.book?.title}>

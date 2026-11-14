@@ -139,7 +139,7 @@ export const MemberCsvModal: React.FC<MemberCsvModalProps> = ({ isOpen, onClose,
           </Button>
         </div>
 
-        <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-teal-500 transition-colors">
+        <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-coral-500 transition-colors">
           <UploadCloud className="w-10 h-10 mx-auto text-slate-400 mb-2" />
           <p className="text-xs font-medium text-slate-700">Select your member roster CSV</p>
           <label className="mt-3 inline-block">
@@ -158,8 +158,8 @@ export const MemberCsvModal: React.FC<MemberCsvModalProps> = ({ isOpen, onClose,
         )}
 
         {csvData.length > 0 && (
-          <div className="p-2.5 bg-teal-50 border border-teal-200 rounded-lg flex items-center gap-2 text-xs text-teal-800">
-            <CheckCircle className="w-4 h-4 text-teal-600" />
+          <div className="p-2.5 bg-coral-50 border border-coral-200 rounded-lg flex items-center gap-2 text-xs text-coral-700">
+            <CheckCircle className="w-4 h-4 text-coral-500" />
             <span>Parsed {csvData.length} member records ready for import</span>
           </div>
         )}

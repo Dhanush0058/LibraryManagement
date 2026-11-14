@@ -86,7 +86,7 @@ export const MemberDetailModal: React.FC<MemberDetailModalProps> = ({
         {/* Currently Issued Books */}
         <div>
           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wide mb-2 flex items-center gap-1.5">
-            <BookOpen className="w-3.5 h-3.5 text-teal-700" /> Currently Issued Books ({activeIssues.length})
+            <BookOpen className="w-3.5 h-3.5 text-coral-600" /> Currently Issued Books ({activeIssues.length})
           </h4>
           {activeIssues.length === 0 ? (
             <p className="text-slate-400 bg-white p-3 rounded-lg border border-slate-100 text-center italic">
@@ -101,7 +101,7 @@ export const MemberDetailModal: React.FC<MemberDetailModalProps> = ({
                       {iss.copy?.book?.title || 'Book Title'}
                     </span>
                     <div className="flex items-center gap-2 mt-0.5 text-slate-500">
-                      <span className="font-mono text-[11px] text-teal-800">
+                      <span className="font-mono text-[11px] text-coral-700">
                         Acc: {iss.copy?.accession_number}
                       </span>
                       <span>•</span>

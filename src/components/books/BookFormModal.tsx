@@ -261,8 +261,8 @@ export const BookFormModal: React.FC<BookFormModalProps> = ({
 
         {/* Initial Copies section for new books */}
         {!bookToEdit && (
-          <div className="p-4 bg-teal-50/60 rounded-lg border border-teal-200 mt-2 space-y-3">
-            <h4 className="text-xs font-bold text-teal-900 uppercase tracking-wide">
+          <div className="p-4 bg-coral-50/60 rounded-lg border border-coral-200 mt-2 space-y-3">
+            <h4 className="text-xs font-bold text-coral-800 uppercase tracking-wide">
               Initial Physical Stock Setup
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">

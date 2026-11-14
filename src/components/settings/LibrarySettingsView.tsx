@@ -52,7 +52,7 @@ export const LibrarySettingsView: React.FC = () => {
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <Settings className="w-5 h-5 text-teal-700" />
+            <Settings className="w-5 h-5 text-coral-600" />
             Library Circulation & Fine Policies
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -83,7 +83,7 @@ export const LibrarySettingsView: React.FC = () => {
             <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
               🎓 MBBS Undergraduate & Postgraduate Student Rules
             </h3>
-            <span className="text-[11px] text-teal-800 bg-teal-50 px-2 py-0.5 rounded font-semibold border border-teal-200">
+            <span className="text-[11px] text-coral-700 bg-coral-50 px-2 py-0.5 rounded font-semibold border border-coral-200">
               Student Category
             </span>
           </div>
@@ -151,7 +151,7 @@ export const LibrarySettingsView: React.FC = () => {
             <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
               👨‍⚕️ Doctors, Faculty & Hospital Staff Rules
             </h3>
-            <span className="text-[11px] text-teal-800 bg-teal-50 px-2 py-0.5 rounded font-semibold border border-teal-200">
+            <span className="text-[11px] text-coral-700 bg-coral-50 px-2 py-0.5 rounded font-semibold border border-coral-200">
               Staff Category
             </span>
           </div>

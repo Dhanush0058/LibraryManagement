@@ -145,7 +145,7 @@ export const BookCsvModal: React.FC<BookCsvModalProps> = ({ isOpen, onClose, onS
         </div>
 
         {/* Step 2: Upload Area */}
-        <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-teal-500 transition-colors">
+        <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-coral-500 transition-colors">
           <UploadCloud className="w-10 h-10 mx-auto text-slate-400 mb-2" />
           <p className="text-xs font-medium text-slate-700">Select or drop your filled CSV file here</p>
           <p className="text-[11px] text-slate-400 mt-0.5">UTF-8 encoded .csv files only</p>
@@ -173,8 +173,8 @@ export const BookCsvModal: React.FC<BookCsvModalProps> = ({ isOpen, onClose, onS
         {csvData.length > 0 && (
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-teal-800 flex items-center gap-1">
-                <CheckCircle className="w-3.5 h-3.5 text-teal-600" />
+              <span className="text-xs font-semibold text-coral-700 flex items-center gap-1">
+                <CheckCircle className="w-3.5 h-3.5 text-coral-500" />
                 Parsed {csvData.length} records ready for import
               </span>
             </div>
@@ -194,7 +194,7 @@ export const BookCsvModal: React.FC<BookCsvModalProps> = ({ isOpen, onClose, onS
                       <td className="px-3 py-1.5 font-medium text-slate-800 max-w-[200px] truncate">{row.title}</td>
                       <td className="px-3 py-1.5 font-mono text-slate-500">{row.isbn}</td>
                       <td className="px-3 py-1.5 text-slate-600 truncate">{row.author}</td>
-                      <td className="px-3 py-1.5 text-center font-bold text-teal-700">{row.copies_count || 1}</td>
+                      <td className="px-3 py-1.5 text-center font-bold text-coral-600">{row.copies_count || 1}</td>
                     </tr>
                   ))}
                 </tbody>

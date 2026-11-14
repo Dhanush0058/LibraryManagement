@@ -23,9 +23,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       const stored = localStorage.getItem(AUTH_STORAGE_KEY);
       if (stored) return JSON.parse(stored);
-      // Default to Super Admin profile for demonstration readiness
-      const profiles = db.getProfiles();
-      return profiles[0] || null;
+      return null;
     } catch {
       return null;
     }

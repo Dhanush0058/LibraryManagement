@@ -129,7 +129,7 @@ export const MemberFormModal: React.FC<MemberFormModalProps> = ({
               onClick={() => handleTypeChange('student')}
               className={`py-2 px-3 rounded-lg border text-xs font-semibold flex items-center justify-center gap-2 transition ${
                 memberType === 'student'
-                  ? 'bg-teal-50 border-teal-600 text-teal-900 ring-1 ring-teal-600'
+                  ? 'bg-coral-50 border-coral-500 text-coral-800 ring-1 ring-coral-500'
                   : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
               }`}
             >
@@ -140,7 +140,7 @@ export const MemberFormModal: React.FC<MemberFormModalProps> = ({
               onClick={() => handleTypeChange('staff')}
               className={`py-2 px-3 rounded-lg border text-xs font-semibold flex items-center justify-center gap-2 transition ${
                 memberType === 'staff'
-                  ? 'bg-teal-50 border-teal-600 text-teal-900 ring-1 ring-teal-600'
+                  ? 'bg-coral-50 border-coral-500 text-coral-800 ring-1 ring-coral-500'
                   : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
               }`}
             >

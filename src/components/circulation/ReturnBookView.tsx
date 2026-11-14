@@ -192,7 +192,7 @@ export const ReturnBookView: React.FC = () => {
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <BookDown className="w-5 h-5 text-teal-700" />
+            <BookDown className="w-5 h-5 text-coral-600" />
             Circulation Desk — Return Processing & Fines
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -227,7 +227,7 @@ export const ReturnBookView: React.FC = () => {
             </div>
             <div>
               <span className="text-slate-500 block">Accession Number:</span>
-              <span className="font-mono font-semibold text-teal-800">{returnSummary.accessionNumber}</span>
+              <span className="font-mono font-semibold text-coral-700">{returnSummary.accessionNumber}</span>
             </div>
             <div>
               <span className="text-slate-500 block">Overdue Duration:</span>
@@ -270,7 +270,7 @@ export const ReturnBookView: React.FC = () => {
                   setSelectedIssue(iss);
                   setReturnDate(todayStr);
                 }}
-                className="text-[11px] px-2 py-1 rounded bg-slate-50 hover:bg-teal-50 border border-slate-200 text-slate-700 transition"
+                className="text-[11px] px-2 py-1 rounded bg-slate-50 hover:bg-coral-50 border border-slate-200 text-slate-700 transition"
               >
                 {iss.issue_code} ({iss.copy?.accession_number})
               </button>
@@ -296,7 +296,7 @@ export const ReturnBookView: React.FC = () => {
             <div>
               <span className="text-[10px] uppercase font-bold text-slate-400">Book Details</span>
               <h4 className="font-bold text-slate-900 text-sm mt-0.5">{selectedIssue.copy?.book?.title}</h4>
-              <p className="font-mono text-teal-800 font-semibold mt-0.5">
+              <p className="font-mono text-coral-700 font-semibold mt-0.5">
                 Accession: {selectedIssue.copy?.accession_number}
               </p>
               <p className="text-slate-500">{selectedIssue.copy?.book?.author}</p>
@@ -384,7 +384,7 @@ export const ReturnBookView: React.FC = () => {
                         type="checkbox"
                         checked={waiveFine}
                         onChange={e => setWaiveFine(e.target.checked)}
-                        className="rounded text-teal-600 focus:ring-teal-500"
+                        className="rounded text-coral-500 focus:ring-coral-500"
                       />
                       <span className="text-xs font-semibold text-slate-800">
                         Authorize Official Fine Waiver (Super Admin Privilege)

@@ -163,7 +163,7 @@ export const FineManagementView: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
         <div>
           <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
-            <IndianRupee className="w-5 h-5 text-teal-700" />
+            <IndianRupee className="w-5 h-5 text-coral-600" />
             Institutional Fine Ledgers & Payment Collections
           </h2>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -183,7 +183,7 @@ export const FineManagementView: React.FC = () => {
             <button
               onClick={() => setActiveTab('fines')}
               className={`px-3 py-1 rounded-md font-semibold transition ${
-                activeTab === 'fines' ? 'bg-white text-teal-900 shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                activeTab === 'fines' ? 'bg-white text-coral-800 shadow-2xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Fines Register
@@ -191,7 +191,7 @@ export const FineManagementView: React.FC = () => {
             <button
               onClick={() => setActiveTab('payments')}
               className={`px-3 py-1 rounded-md font-semibold transition ${
-                activeTab === 'payments' ? 'bg-white text-teal-900 shadow-2xs' : 'text-slate-600 hover:text-slate-900'
+                activeTab === 'payments' ? 'bg-white text-coral-800 shadow-2xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Payment Receipts ({payments.length})
@@ -213,7 +213,7 @@ export const FineManagementView: React.FC = () => {
             }
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600"
+            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500"
           />
         </div>
 
@@ -223,7 +223,7 @@ export const FineManagementView: React.FC = () => {
             <select
               value={statusFilter}
               onChange={e => setStatusFilter(e.target.value as any)}
-              className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-teal-600 bg-white"
+              className="w-full py-1.5 px-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:border-coral-500 bg-white"
             >
               <option value="all">All Fine Statuses</option>
               <option value="pending">Pending Settlement</option>
@@ -269,7 +269,7 @@ export const FineManagementView: React.FC = () => {
                         </td>
 
                         <td className="px-3 py-3 max-w-xs">
-                          <span className="font-mono text-[11px] font-semibold text-teal-800">
+                          <span className="font-mono text-[11px] font-semibold text-coral-700">
                             {fine.issue?.issue_code || 'Direct Assessment'}
                           </span>
                           <div className="text-slate-600 truncate mt-0.5">
@@ -371,7 +371,7 @@ export const FineManagementView: React.FC = () => {
                 ) : (
                   filteredPayments.map(payment => (
                     <tr key={payment.id} className="hover:bg-slate-50/70 transition">
-                      <td className="px-4 py-3 font-mono font-bold text-teal-900">
+                      <td className="px-4 py-3 font-mono font-bold text-coral-800">
                         {payment.receipt_no}
                         <div className="text-[10px] text-slate-400 font-normal">
                           {new Date(payment.payment_date).toLocaleString()}
@@ -418,7 +418,7 @@ export const FineManagementView: React.FC = () => {
                               generatePaymentReceiptPdf(payment, payment.member, fine);
                             }
                           }}
-                          className="inline-flex items-center gap-1 text-teal-700 hover:text-teal-900 font-semibold hover:underline"
+                          className="inline-flex items-center gap-1 text-coral-600 hover:text-coral-800 font-semibold hover:underline"
                         >
                           <Receipt className="w-3.5 h-3.5" /> Print Receipt
                         </button>

@@ -4,24 +4,26 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 font-sans antialiased;
+    @apply bg-[#FBF9F5] text-charcoal-900 font-sans antialiased;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 80px 100%;
   }
 }
 
-/* Custom scrollbars */
+/* Custom scrollbars with warm coral hover */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f4f2ec;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: #d5d9de;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #f96849;
 }
 
 @media print {
