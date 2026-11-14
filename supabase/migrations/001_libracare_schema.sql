@@ -274,6 +274,11 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
+-- Public read policies for reference data (categories, departments, settings)
+CREATE POLICY "Public read departments" ON departments FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Public read categories" ON categories FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Public read settings" ON library_settings FOR SELECT TO anon, authenticated USING (true);
+
 -- Policies: Authenticated authorities can read and write operational tables
 CREATE POLICY "Authorities view profiles" ON profiles FOR SELECT TO authenticated USING (is_authority());
 CREATE POLICY "Super Admins manage profiles" ON profiles FOR ALL TO authenticated USING (is_super_admin());
