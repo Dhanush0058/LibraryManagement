@@ -12,37 +12,37 @@ export default {
       },
       colors: {
         coral: {
-          50: '#fff5f2',
-          100: '#ffe8e2',
-          200: '#ffd5ca',
-          300: '#fdb5a4',
-          400: '#fb8b72',
-          500: '#f96849', // Primary Coral / Terracotta from reference
-          600: '#e8502f',
-          700: '#c33e22',
-          800: '#a1351f',
-          900: '#84311f',
-          950: '#48150a',
+          50: '#fff8f5',
+          100: '#ffefe9',
+          200: '#fedfd4',
+          300: '#fcc5b2',
+          400: '#faa485',
+          500: '#fa8a5a', // Exact sampled solid light orange from user reference
+          600: '#e97545',
+          700: '#c75c2e',
+          800: '#a14822',
+          900: '#823b1e',
+          950: '#481b0a',
         },
         charcoal: {
           50: '#f6f7f8',
-          100: '#eceef0',
-          200: '#d5d9de',
-          300: '#b1b9c2',
-          400: '#8693a1',
-          500: '#667484',
-          600: '#515e6d',
-          700: '#424d5a',
-          800: '#2b313a',
-          900: '#1c2026', // Deep charcoal from reference image footer
-          950: '#121418',
+          100: '#ededf0',
+          200: '#d8d9e0',
+          300: '#b4b6c2',
+          400: '#888c9c',
+          500: '#646979',
+          600: '#4d5262',
+          700: '#3b404e',
+          800: '#2b2f3a',
+          900: '#20232b', // Deep matte charcoal from user reference
+          950: '#15171c',
         },
         parchment: {
-          50: '#faf9f6', // Warm off-white background
-          100: '#f4f2ec',
-          200: '#eae6dc',
-          300: '#dcD6C7',
-          400: '#c8bfae',
+          50: '#faf8f5', // Warm clean alabaster background
+          100: '#f4f0e8',
+          200: '#eae4d7',
+          300: '#dcd2c0',
+          400: '#c4b79f',
         }
       }
     },

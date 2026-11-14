@@ -16,8 +16,42 @@ interface DashboardViewProps {
   onNavigate: (tab: any) => void;
 }
 
-// Warm Terracotta & Charcoal Palette from Reference
-const COLORS = ['#F96849', '#1C2026', '#E8502F', '#667484', '#FB8B72', '#A1351F'];
+// Sampled solid light orange and complementary modern charcoal from user reference
+const COLORS = ['#FA8A5A', '#20232B', '#FAA485', '#646979', '#E97545', '#3B404E'];
+
+// High-contrast, crystal-clear custom tooltip so Books Returned & Issued are 100% visible!
+const CustomCirculationTooltip = ({ active, payload, label }: any) => {
+  if (active && payload && payload.length) {
+    const issuedItem = payload.find((p: any) => p.dataKey === 'issued') || payload[0];
+    const returnedItem = payload.find((p: any) => p.dataKey === 'returned') || payload[1];
+
+    return (
+      <div className="bg-white border-2 border-parchment-200/90 p-4 rounded-2xl shadow-xl text-xs space-y-2.5 min-w-[190px]">
+        <div className="font-bold text-charcoal-900 border-b border-parchment-200 pb-1.5 flex items-center justify-between">
+          <span className="text-sm font-bold tracking-tight text-charcoal-900">{label}</span>
+          <span className="text-[10px] text-coral-700 bg-coral-50 font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-coral-200">
+            Circulation
+          </span>
+        </div>
+        <div className="flex items-center justify-between text-charcoal-700 font-semibold pt-0.5">
+          <span className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FA8A5A] shadow-xs flex-shrink-0" />
+            <span className="text-charcoal-700 text-xs">Books Issued</span>
+          </span>
+          <span className="font-mono font-bold text-coral-600 text-sm">{issuedItem?.value ?? 0}</span>
+        </div>
+        <div className="flex items-center justify-between text-charcoal-700 font-semibold">
+          <span className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#20232B] shadow-xs flex-shrink-0" />
+            <span className="text-charcoal-700 text-xs">Books Returned</span>
+          </span>
+          <span className="font-mono font-bold text-charcoal-900 text-sm">{returnedItem?.value ?? 0}</span>
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
 
 export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
   const [dateFilter, setDateFilter] = useState<'all' | 'this_month' | 'this_year'>('this_month');
@@ -149,27 +183,27 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             {dateFilter === 'this_month' ? 'Current Academic Month' : dateFilter === 'this_year' ? 'Academic Year 2024-25' : 'All-time Records'}
           </span>
         </div>
-        <div className="flex items-center gap-1.5 bg-parchment-100 p-1 rounded-full border border-parchment-200">
+        <div className="flex items-center gap-1.5 bg-parchment-100 p-1.5 rounded-full border border-parchment-200">
           <button
             onClick={() => setDateFilter('this_month')}
-            className={`px-3 py-1 rounded-full text-xs font-semibold transition ${
-              dateFilter === 'this_month' ? 'bg-white text-coral-600 shadow-2xs' : 'text-charcoal-600 hover:text-charcoal-900'
+            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
+              dateFilter === 'this_month' ? 'bg-coral-500 text-white shadow-xs' : 'text-charcoal-600 hover:text-charcoal-900'
             }`}
           >
             This Month
           </button>
           <button
             onClick={() => setDateFilter('this_year')}
-            className={`px-3 py-1 rounded-full text-xs font-semibold transition ${
-              dateFilter === 'this_year' ? 'bg-white text-coral-600 shadow-2xs' : 'text-charcoal-600 hover:text-charcoal-900'
+            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
+              dateFilter === 'this_year' ? 'bg-coral-500 text-white shadow-xs' : 'text-charcoal-600 hover:text-charcoal-900'
             }`}
           >
             Academic Year
           </button>
           <button
             onClick={() => setDateFilter('all')}
-            className={`px-3 py-1 rounded-full text-xs font-semibold transition ${
-              dateFilter === 'all' ? 'bg-white text-coral-600 shadow-2xs' : 'text-charcoal-600 hover:text-charcoal-900'
+            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
+              dateFilter === 'all' ? 'bg-coral-500 text-white shadow-xs' : 'text-charcoal-600 hover:text-charcoal-900'
             }`}
           >
             All
@@ -222,14 +256,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={stats.circulationTrends} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#8693A1' }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fontSize: 11, fill: '#8693A1' }} axisLine={false} tickLine={false} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#1C2026', borderColor: '#2B313A', color: '#fff', borderRadius: '12px', fontSize: '12px' }}
+                <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#646979' }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 11, fill: '#646979' }} axisLine={false} tickLine={false} />
+                <Tooltip content={<CustomCirculationTooltip />} cursor={{ fill: 'rgba(250, 138, 90, 0.08)' }} />
+                <Legend 
+                  wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }}
+                  formatter={(value) => <span className="font-bold text-charcoal-800 px-1">{value}</span>}
                 />
-                <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '8px' }} />
-                <Bar dataKey="issued" name="Books Issued" fill="#F96849" radius={[6, 6, 0, 0]} />
-                <Bar dataKey="returned" name="Books Returned" fill="#2B313A" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="issued" name="Books Issued" fill="#FA8A5A" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="returned" name="Books Returned" fill="#20232B" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -261,7 +296,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   ))}
                 </Pie>
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#1C2026', borderColor: '#2B313A', color: '#fff', borderRadius: '12px', fontSize: '11px' }}
+                  contentStyle={{ backgroundColor: '#FFFFFF', borderColor: '#EAE4D7', color: '#20232B', borderRadius: '16px', fontSize: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }}
                   formatter={(val, name) => [`${val} Copies`, name]}
                 />
               </PieChart>
@@ -271,7 +306,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             {stats.categoryDistribution.slice(0, 4).map((c, i) => (
               <div key={i} className="flex items-center gap-1.5 truncate">
                 <span className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ backgroundColor: COLORS[i] }} />
-                <span className="truncate">{c.code} ({c.copiesCount})</span>
+                <span className="truncate font-medium">{c.code} ({c.copiesCount})</span>
               </div>
             ))}
           </div>

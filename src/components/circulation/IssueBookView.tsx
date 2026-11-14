@@ -136,13 +136,13 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
       {/* Title */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
+      <div className="bg-white p-5 rounded-2xl border border-parchment-200 shadow-2xs flex items-center justify-between">
         <div>
-          <h2 className="text-base font-bold text-slate-800 flex items-center gap-2">
+          <h2 className="text-base font-bold text-charcoal-900 flex items-center gap-2">
             <BookUp className="w-5 h-5 text-coral-600" />
             Circulation Desk — Issue Book
           </h2>
-          <p className="text-xs text-slate-500 mt-0.5">
+          <p className="text-xs text-charcoal-500 mt-0.5">
             Strict accession barcode verification, eligibility checks, and loan logging
           </p>
         </div>
@@ -151,7 +151,7 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
 
       {/* Success Receipt Banner if just issued */}
       {lastIssuedReceipt && (
-        <div className="bg-coral-50 border border-coral-200 rounded-xl p-5 shadow-xs animate-fadeIn">
+        <div className="bg-coral-50 border border-coral-200 rounded-2xl p-5 shadow-xs animate-fadeIn">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-coral-600" />
@@ -166,19 +166,19 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
           </div>
           <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
             <div>
-              <span className="text-slate-500 block">Issue Reference:</span>
-              <span className="font-mono font-bold text-slate-900">{lastIssuedReceipt.issueCode}</span>
+              <span className="text-charcoal-500 block">Issue Reference:</span>
+              <span className="font-mono font-bold text-charcoal-900">{lastIssuedReceipt.issueCode}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Book Title:</span>
-              <span className="font-semibold text-slate-900 truncate block">{lastIssuedReceipt.book?.title}</span>
+              <span className="text-charcoal-500 block">Book Title:</span>
+              <span className="font-semibold text-charcoal-900 truncate block">{lastIssuedReceipt.book?.title}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Accession Number:</span>
+              <span className="text-charcoal-500 block">Accession Number:</span>
               <span className="font-mono font-semibold text-coral-700">{lastIssuedReceipt.copy?.accession_number}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Return Due Date:</span>
+              <span className="text-charcoal-500 block">Return Due Date:</span>
               <span className="font-bold text-amber-700">{lastIssuedReceipt.dueDate}</span>
             </div>
           </div>
@@ -188,9 +188,9 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
       {/* 2-Column Issue Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Step 1: Member Verification */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-white rounded-2xl border border-parchment-200 shadow-2xs p-5 space-y-4">
+          <div className="flex items-center justify-between border-b border-parchment-200 pb-3">
+            <h3 className="text-sm font-bold text-charcoal-900 flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-coral-100 text-coral-700 text-xs font-bold flex items-center justify-center">
                 1
               </span>
@@ -217,25 +217,25 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
 
           {/* Member Card Details */}
           {selectedMember ? (
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
+            <div className="p-4 rounded-xl bg-parchment-50 border border-parchment-200 space-y-3 text-xs">
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-slate-900 text-sm">{selectedMember.full_name}</h4>
-                  <p className="font-mono text-slate-600">{selectedMember.identifier}</p>
+                  <h4 className="font-bold text-charcoal-900 text-sm">{selectedMember.full_name}</h4>
+                  <p className="font-mono text-charcoal-600">{selectedMember.identifier}</p>
                 </div>
                 <Badge variant={selectedMember.member_type === 'student' ? 'purple' : 'info'}>
                   {selectedMember.member_type === 'student' ? 'Student' : 'Staff / Faculty'}
                 </Badge>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-600">
+              <div className="grid grid-cols-2 gap-2 text-[11px] text-charcoal-600">
                 <div>
-                  <span className="text-slate-400 block">Department:</span>
-                  <span className="font-medium text-slate-800">{selectedMember.department?.name}</span>
+                  <span className="text-charcoal-400 block">Department:</span>
+                  <span className="font-semibold text-charcoal-800">{selectedMember.department?.name}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block">Role / Year:</span>
-                  <span className="font-medium text-slate-800">
+                  <span className="text-charcoal-400 block">Role / Year:</span>
+                  <span className="font-semibold text-charcoal-800">
                     {selectedMember.member_type === 'student'
                       ? `${selectedMember.course} (${selectedMember.academic_year})`
                       : selectedMember.designation}
@@ -244,10 +244,10 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
               </div>
 
               {/* Loan limit indicator */}
-              <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-xs">
+              <div className="pt-2 border-t border-parchment-200 flex items-center justify-between text-xs">
                 <span>
                   Quota Used:{' '}
-                  <strong className="text-slate-900">
+                  <strong className="text-charcoal-900">
                     {selectedMember.active_issues_count || 0} / {selectedMember.max_borrow_limit}
                   </strong>
                 </span>
@@ -263,16 +263,16 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
               </div>
             </div>
           ) : (
-            <div className="py-8 text-center text-slate-400 text-xs border border-dashed rounded-xl">
+            <div className="py-8 text-center text-charcoal-400 text-xs border border-dashed border-parchment-300 rounded-xl bg-parchment-50/50">
               Search by Roll No (e.g. <code>ESIC/MBBS/2022/014</code>) or Employee ID (e.g. <code>EMP-MED-201</code>).
             </div>
           )}
         </div>
 
         {/* Step 2: Book Accession Copy Verification */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-white rounded-2xl border border-parchment-200 shadow-2xs p-5 space-y-4">
+          <div className="flex items-center justify-between border-b border-parchment-200 pb-3">
+            <h3 className="text-sm font-bold text-charcoal-900 flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-coral-100 text-coral-700 text-xs font-bold flex items-center justify-center">
                 2
               </span>
@@ -297,31 +297,31 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
 
           {/* Copy Details */}
           {selectedCopy ? (
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
+            <div className="p-4 rounded-xl bg-parchment-50 border border-parchment-200 space-y-3 text-xs">
               <div>
                 <span className="text-[10px] text-coral-700 uppercase font-bold tracking-wider">Accession Number</span>
-                <h4 className="font-mono font-bold text-slate-900 text-sm">{selectedCopy.accession_number}</h4>
+                <h4 className="font-mono font-bold text-charcoal-900 text-sm">{selectedCopy.accession_number}</h4>
               </div>
 
               <div className="pt-1">
-                <span className="text-[10px] text-slate-400 uppercase font-bold">Textbook Title</span>
-                <p className="font-semibold text-slate-800 text-xs mt-0.5">{selectedCopy.book?.title}</p>
-                <p className="text-[11px] text-slate-500">{selectedCopy.book?.author} • ISBN: {selectedCopy.book?.isbn}</p>
+                <span className="text-[10px] text-charcoal-400 uppercase font-bold">Textbook Title</span>
+                <p className="font-semibold text-charcoal-800 text-xs mt-0.5">{selectedCopy.book?.title}</p>
+                <p className="text-[11px] text-charcoal-500">{selectedCopy.book?.author} • ISBN: {selectedCopy.book?.isbn}</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-600 pt-1 border-t border-slate-200">
+              <div className="grid grid-cols-2 gap-2 text-[11px] text-charcoal-600 pt-1 border-t border-parchment-200">
                 <div>
-                  <span className="text-slate-400 block">Shelf Location:</span>
-                  <span className="font-mono text-slate-800">{selectedCopy.shelf_location || 'General Stack'}</span>
+                  <span className="text-charcoal-400 block">Shelf Location:</span>
+                  <span className="font-mono text-charcoal-800">{selectedCopy.shelf_location || 'General Stack'}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block">Condition:</span>
-                  <span className="text-slate-800">{selectedCopy.condition_notes || 'Good'}</span>
+                  <span className="text-charcoal-400 block">Condition:</span>
+                  <span className="text-charcoal-800">{selectedCopy.condition_notes || 'Good'}</span>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="py-8 text-center text-slate-400 text-xs border border-dashed rounded-xl">
+            <div className="py-8 text-center text-charcoal-400 text-xs border border-dashed border-parchment-300 rounded-xl bg-parchment-50/50">
               Scan barcode or enter accession number (e.g. <code>ESIC-PATH-2023-001</code>).
             </div>
           )}
@@ -329,8 +329,8 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
       </div>
 
       {/* Step 3: Dates & Confirmation */}
-      <form onSubmit={handleConfirmIssue} className="bg-white rounded-xl border border-slate-200 shadow-2xs p-5 space-y-4">
-        <h3 className="text-sm font-bold text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3">
+      <form onSubmit={handleConfirmIssue} className="bg-white rounded-2xl border border-parchment-200 shadow-2xs p-5 space-y-4">
+        <h3 className="text-sm font-bold text-charcoal-900 flex items-center gap-2 border-b border-parchment-200 pb-3">
           <span className="w-5 h-5 rounded-full bg-coral-100 text-coral-700 text-xs font-bold flex items-center justify-center">
             3
           </span>
@@ -372,16 +372,16 @@ export const IssueBookView: React.FC<IssueBookViewProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-          <div className="text-xs text-slate-500">
-            Authorized by: <strong className="text-slate-800">{user?.full_name || 'Staff'}</strong>
+        <div className="flex items-center justify-between pt-4 border-t border-parchment-200">
+          <div className="text-xs text-charcoal-500">
+            Authorized by: <strong className="text-charcoal-800">{user?.full_name || 'Staff'}</strong>
           </div>
           <Button
             type="submit"
             variant="primary"
             size="lg"
             disabled={!selectedMember || !selectedCopy || !isMemberEligible}
-            className="text-sm font-semibold"
+            className="text-sm font-bold shadow-md shadow-coral-500/25"
           >
             <BookUp className="w-4 h-4 mr-2" />
             Authorize & Issue Book Copy

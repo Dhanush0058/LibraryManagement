@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-[#FBF9F5] text-charcoal-900 font-sans antialiased;
+    @apply bg-[#FAF8F5] text-charcoal-900 font-sans antialiased;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
     background-size: 80px 100%;
   }
@@ -16,14 +16,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f4f2ec;
+  background: #f4f0e8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d5d9de;
+  background: #d8d9e0;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f96849;
+  background: #fa8a5a;
 }
 
 @media print {

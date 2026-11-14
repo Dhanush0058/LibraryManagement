@@ -10,8 +10,8 @@ export const Card: React.FC<CardProps> = ({ children, className = '', onClick })
   return (
     <div
       onClick={onClick}
-      className={`bg-white rounded-xl border border-slate-200/90 shadow-sm transition-all duration-200 ${
-        onClick ? 'cursor-pointer hover:shadow-md hover:border-slate-300' : ''
+      className={`bg-white rounded-2xl border border-parchment-200 shadow-2xs transition-all duration-200 ${
+        onClick ? 'cursor-pointer hover:shadow-md hover:border-coral-300' : ''
       } ${className}`}
     >
       {children}
@@ -25,10 +25,10 @@ export const CardHeader: React.FC<{
   action?: ReactNode;
   className?: string;
 }> = ({ title, subtitle, action, className = '' }) => (
-  <div className={`px-5 py-4 border-b border-slate-100 flex items-center justify-between ${className}`}>
+  <div className={`px-6 py-4 border-b border-parchment-200 flex items-center justify-between ${className}`}>
     <div>
-      <h3 className="font-semibold text-slate-800 text-sm tracking-wide">{title}</h3>
-      {subtitle && <p className="text-xs text-slate-500 mt-0.5">{subtitle}</p>}
+      <h3 className="font-bold text-charcoal-900 text-sm tracking-tight">{title}</h3>
+      {subtitle && <p className="text-xs text-charcoal-500 mt-0.5">{subtitle}</p>}
     </div>
     {action && <div>{action}</div>}
   </div>
