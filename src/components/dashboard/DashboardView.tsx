@@ -263,8 +263,8 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }}
                   formatter={(value) => <span className="font-bold text-charcoal-800 px-1">{value}</span>}
                 />
-                <Bar dataKey="issued" name="Books Issued" fill="#FA8A5A" radius={[6, 6, 0, 0]} />
-                <Bar dataKey="returned" name="Books Returned" fill="#20232B" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="issued" name="Books Issued" fill="#FA8A5A" radius={[6, 6, 0, 0]} isAnimationActive={false} />
+                <Bar dataKey="returned" name="Books Returned" fill="#20232B" radius={[6, 6, 0, 0]} isAnimationActive={false} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -290,6 +290,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   outerRadius={72}
                   innerRadius={42}
                   paddingAngle={3}
+                  isAnimationActive={false}
                 >
                   {stats.categoryDistribution.map((_entry, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

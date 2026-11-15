@@ -153,7 +153,11 @@ export const App: React.FC = () => {
 
         {/* View Router */}
         <main key={refreshKey} className="flex-1 p-4 lg:p-8 max-w-7xl w-full mx-auto">
-          {currentTab === 'dashboard' && <DashboardView onNavigate={navigate} />}
+          {/* Static persistent Dashboard - remains mounted so visuals and graphs never re-animate or re-load when returning */}
+          <div className={currentTab === 'dashboard' ? 'block' : 'hidden'}>
+            <DashboardView onNavigate={navigate} />
+          </div>
+
           {currentTab === 'books' && <BookListView onNavigateBack={handleSwipeBack} />}
           {currentTab === 'categories' && <CategoriesView />}
           {currentTab === 'members' && <MemberListView onIssueBookToMember={handleIssueBookToMember} />}
