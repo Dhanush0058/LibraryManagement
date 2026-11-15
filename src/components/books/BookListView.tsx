@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   BookOpen, Plus, Search, Filter, Download, FileText, 
-  Copy, Edit, Trash2, Layers
+  Copy, Edit, Trash2, Layers, ArrowLeft
 } from 'lucide-react';
 import { db } from '../../services/db';
 import { Book } from '../../types';
@@ -14,7 +14,11 @@ import { exportToCsv, generateInventoryPdf } from '../../services/reports';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 
-export const BookListView: React.FC = () => {
+interface BookListViewProps {
+  onNavigateBack?: () => void;
+}
+
+export const BookListView: React.FC<BookListViewProps> = ({ onNavigateBack }) => {
   const { user } = useAuth();
   const { success, error } = useToast();
 
@@ -92,10 +96,24 @@ export const BookListView: React.FC = () => {
       {/* Top action header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-5 rounded-2xl border border-parchment-200 shadow-2xs">
         <div>
-          <h2 className="text-base font-bold text-charcoal-900 flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-coral-600" />
-            Medical Book Catalog & Physical Stock
-          </h2>
+          <div className="flex items-center gap-2">
+            {onNavigateBack && (
+              <button
+                onClick={onNavigateBack}
+                className="p-1 rounded-full text-charcoal-500 hover:text-coral-600 hover:bg-parchment-100 border border-parchment-200 transition"
+                title="Return to Operational Dashboard (or swipe right)"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </button>
+            )}
+            <h2 className="text-base font-bold text-charcoal-900 flex items-center gap-2">
+              <BookOpen className="w-5 h-5 text-coral-600" />
+              Medical Book Catalog & Physical Stock
+            </h2>
+            <span className="hidden xl:inline-flex items-center gap-1 text-[10px] text-charcoal-400 bg-parchment-100 px-2 py-0.5 rounded-full border border-parchment-200">
+              <span className="text-coral-600 font-bold">Swipe right</span> to return
+            </span>
+          </div>
           <p className="text-xs text-charcoal-500 mt-0.5">
             Total {books.length} titles catalogued • Real-time accession tracking
           </p>

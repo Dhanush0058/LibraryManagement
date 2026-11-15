@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from './context/AuthContext';
 import { LoginView } from './components/auth/LoginView';
 import { Sidebar, NavItemKey } from './components/layout/Sidebar';
@@ -17,16 +17,81 @@ import { ReportsView } from './components/reports/ReportsView';
 import { StaffManagementView } from './components/staff/StaffManagementView';
 import { LibrarySettingsView } from './components/settings/LibrarySettingsView';
 import { AuditLogsView } from './components/audit/AuditLogsView';
+import { useSwipeNavigation } from './hooks/useSwipeNavigation';
+import { GestureBackIndicator } from './components/navigation/GestureBackIndicator';
 import { Member } from './types';
+
+const VALID_TABS: NavItemKey[] = [
+  'dashboard', 'books', 'categories', 'members', 'issue', 'return',
+  'transactions', 'overdue', 'fines', 'purchases', 'reports', 'staff',
+  'settings', 'audit'
+];
 
 export const App: React.FC = () => {
   const { isAuthenticated, isSuperAdmin } = useAuth();
-  const [currentTab, setCurrentTab] = useState<NavItemKey>('dashboard');
+  const [currentTab, setCurrentTab] = useState<NavItemKey>(() => {
+    const hash = window.location.hash.replace('#', '') as NavItemKey;
+    return VALID_TABS.includes(hash) ? hash : 'dashboard';
+  });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [preselectedMemberForIssue, setPreselectedMemberForIssue] = useState<Member | null>(null);
 
   // Re-render trigger when data resets
   const [refreshKey, setRefreshKey] = useState(0);
+
+  // Router navigation helper with HTML5 History API integration
+  const navigate = useCallback((tab: NavItemKey, replace = false) => {
+    if (tab === currentTab && !replace) return;
+
+    if (replace) {
+      window.history.replaceState({ tab }, '', `#${tab}`);
+    } else {
+      window.history.pushState({ tab }, '', `#${tab}`);
+    }
+    setCurrentTab(tab);
+  }, [currentTab]);
+
+  // Handle native gesture back or swipe-to-navigate action
+  const handleSwipeBack = useCallback(() => {
+    // Already on the main operational dashboard
+    if (currentTab === 'dashboard') return;
+
+    // Functions similarly to a native gesture back button triggering router's history back method
+    if (window.history.state && window.history.length > 1) {
+      window.history.back();
+    } else {
+      // Direct reliable fallback to operational dashboard
+      navigate('dashboard');
+    }
+  }, [currentTab, navigate]);
+
+  // Edge / touch swipe navigation listener hook
+  const swipeState = useSwipeNavigation({
+    onSwipeBack: handleSwipeBack,
+    isBackAllowed: currentTab !== 'dashboard',
+    threshold: 75,
+  });
+
+  // Listen to popstate event (browser back/forward button or native OS gesture back)
+  useEffect(() => {
+    // Initialize history state on first mount
+    if (!window.history.state || !window.history.state.tab) {
+      window.history.replaceState({ tab: currentTab }, '', `#${currentTab}`);
+    }
+
+    const handlePopState = (e: PopStateEvent) => {
+      const targetTab = e.state?.tab as NavItemKey;
+      if (targetTab && VALID_TABS.includes(targetTab)) {
+        setCurrentTab(targetTab);
+      } else {
+        // Fallback to operational dashboard if at start of history
+        setCurrentTab('dashboard');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   if (!isAuthenticated) {
     return <LoginView />;
@@ -34,12 +99,12 @@ export const App: React.FC = () => {
 
   // Safety fallback if librarian tries to open super-admin tab
   if (!isSuperAdmin && (currentTab === 'staff' || currentTab === 'settings' || currentTab === 'audit')) {
-    setCurrentTab('dashboard');
+    navigate('dashboard', true);
   }
 
   const handleIssueBookToMember = (member: Member) => {
     setPreselectedMemberForIssue(member);
-    setCurrentTab('issue');
+    navigate('issue');
   };
 
   const getPageTitle = (tab: NavItemKey): string => {
@@ -63,11 +128,14 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] flex">
+    <div className="min-h-screen bg-[#FAF8F5] flex relative overflow-x-hidden">
+      {/* Visual Gesture Back Indicator on touch swipe */}
+      <GestureBackIndicator swipeState={swipeState} targetTitle="Operational Dashboard" />
+
       {/* Sidebar Navigation */}
       <Sidebar
         currentTab={currentTab}
-        onSelectTab={setCurrentTab}
+        onSelectTab={navigate}
         isOpenMobile={isMobileMenuOpen}
         onCloseMobile={() => setIsMobileMenuOpen(false)}
       />
@@ -79,12 +147,14 @@ export const App: React.FC = () => {
           onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
           pageTitle={getPageTitle(currentTab)}
           onRefreshData={() => setRefreshKey(k => k + 1)}
+          canGoBack={currentTab !== 'dashboard'}
+          onNavigateBack={handleSwipeBack}
         />
 
         {/* View Router */}
         <main key={refreshKey} className="flex-1 p-4 lg:p-8 max-w-7xl w-full mx-auto">
-          {currentTab === 'dashboard' && <DashboardView onNavigate={setCurrentTab} />}
-          {currentTab === 'books' && <BookListView />}
+          {currentTab === 'dashboard' && <DashboardView onNavigate={navigate} />}
+          {currentTab === 'books' && <BookListView onNavigateBack={handleSwipeBack} />}
           {currentTab === 'categories' && <CategoriesView />}
           {currentTab === 'members' && <MemberListView onIssueBookToMember={handleIssueBookToMember} />}
           {currentTab === 'issue' && (
@@ -92,7 +162,7 @@ export const App: React.FC = () => {
               preselectedMember={preselectedMemberForIssue}
               onSuccessNavigate={() => {
                 setPreselectedMemberForIssue(null);
-                setCurrentTab('transactions');
+                navigate('transactions');
               }}
             />
           )}
