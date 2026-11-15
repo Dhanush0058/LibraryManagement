@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BookOpen, Copy, CheckCircle2, BookUp, Users, 
   GraduationCap, AlertCircle, IndianRupee, ArrowUpRight, 
@@ -11,6 +11,7 @@ import {
 import { db } from '../../services/db';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
+import { DashboardSkeleton } from '../ui/Skeleton';
 
 interface DashboardViewProps {
   onNavigate: (tab: any) => void;
@@ -55,7 +56,21 @@ const CustomCirculationTooltip = ({ active, payload, label }: any) => {
 
 export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
   const [dateFilter, setDateFilter] = useState<'all' | 'this_month' | 'this_year'>('this_month');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Immediate structural skeleton paint on mount
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 280);
+    return () => clearTimeout(timer);
+  }, []);
+
   const stats = db.getDashboardStats();
+
+  if (isLoading) {
+    return <DashboardSkeleton />;
+  }
 
   const summaryCards = [
     {

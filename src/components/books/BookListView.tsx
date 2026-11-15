@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BookOpen, Plus, Search, Filter, Download, FileText, 
   Copy, Edit, Trash2, Layers, ArrowLeft
@@ -10,6 +10,7 @@ import { Badge } from '../ui/Badge';
 import { BookFormModal } from './BookFormModal';
 import { BookCopiesModal } from './BookCopiesModal';
 import { BookCsvModal } from './BookCsvModal';
+import { TableSkeleton } from '../ui/Skeleton';
 import { exportToCsv, generateInventoryPdf } from '../../services/reports';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
@@ -22,6 +23,7 @@ export const BookListView: React.FC<BookListViewProps> = ({ onNavigateBack }) =>
   const { user } = useAuth();
   const { success, error } = useToast();
 
+  const [isLoading, setIsLoading] = useState(true);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -32,10 +34,22 @@ export const BookListView: React.FC<BookListViewProps> = ({ onNavigateBack }) =>
   const [isCsvOpen, setIsCsvOpen] = useState(false);
   const [activeBook, setActiveBook] = useState<Book | null>(null);
 
+  useEffect(() => {
+    // Initial skeleton wireframe loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 240);
+    return () => clearTimeout(timer);
+  }, [refreshTrigger]);
+
   const books = db.getBooks();
   const categories = db.getCategories();
 
   const triggerRefresh = () => setRefreshTrigger(prev => prev + 1);
+
+  if (isLoading) {
+    return <TableSkeleton rows={7} />;
+  }
 
   // Filters
   const filteredBooks = books.filter(b => {
